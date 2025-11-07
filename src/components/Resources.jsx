@@ -19,7 +19,12 @@ const Resources = () => {
         </section>
 
         <section style={{ marginBottom: "60px" }}>
-          <h2>Tree</h2>
+          <h2>AL-ML</h2>
+          <p>Content about Algorithms will go here.</p>
+        </section>
+
+        <section style={{ marginBottom: "60px" }}>
+          <h2>DBMS</h2>
           <p>Content about Trees will go here.</p>
         </section>
       </main>
