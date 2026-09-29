@@ -82,4 +82,15 @@ const resources = [
   },
 ];
 
+// Semester exam papers shared by the university library (Google Drive folders).
+// Each folder is split by department, e.g. Engineering, Mathematics & Computer Sc.
+export const semesterPapers = [
+  { year: "2023-24", url: "https://drive.google.com/drive/folders/1Euo45efek_hnXrKCz6NTng8FGRhSU9mO" },
+  { year: "2022-23", url: "https://drive.google.com/drive/folders/1ZmVXm7aPYMsBUZY_DMwpOlj2pJZUX7_Y" },
+  { year: "2018-19", url: "https://drive.google.com/drive/folders/1MVG1Bv6fx7-hVws0ZaHg6HyvDl8F7GMT" },
+  { year: "2017-18", url: "https://drive.google.com/drive/folders/1inFH2rMTuw7YPZAb5UYehhUZFih-gH0z" },
+  { year: "2016-17", url: "https://drive.google.com/drive/folders/160Ud357Uryrp6aNzeQZjdiqX8wQNP3oy" },
+  { year: "2015-16", url: "https://drive.google.com/drive/folders/1xCVllIiijaXF1OGll9f23Bz6Z2ikzba3" },
+];
+
 export default resources;

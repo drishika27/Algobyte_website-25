@@ -8,9 +8,10 @@ import {
   FaGithub,
   FaTools,
   FaSearch,
+  FaFileAlt,
 } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
-import resources from "../data/resources";
+import resources, { semesterPapers } from "../data/resources";
 
 const icons = {
   dsa: <FaCode />,
@@ -41,6 +42,12 @@ const Resources = () => {
       ),
     }))
     .filter((category) => category.links.length > 0);
+
+  const showPapers =
+    (activeCategory === "all" || activeCategory === "pyq") &&
+    (!search ||
+      "previous year papers pyq semester exam".includes(search) ||
+      semesterPapers.some((paper) => paper.year.includes(search)));
 
   return (
     <div id="resources">
@@ -78,12 +85,55 @@ const Resources = () => {
               {category.title}
             </button>
           ))}
+          <button
+            className={activeCategory === "pyq" ? "active" : ""}
+            onClick={() => setActiveCategory("pyq")}
+          >
+            Previous Year Papers
+          </button>
         </div>
       </div>
 
-      {visibleCategories.length === 0 ? (
+      {showPapers && (
+        <motion.div
+          className="pyqSection"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          <header>
+            <span className="resourceIcon">
+              <FaFileAlt />
+            </span>
+            <div>
+              <h3>Previous Year Papers</h3>
+              <p>
+                Semester exam papers from the university library. Open a year,
+                then your department folder (e.g. Engineering or Mathematics
+                &amp; Computer Sc).
+              </p>
+            </div>
+          </header>
+
+          <div className="pyqYears">
+            {semesterPapers.map((paper) => (
+              <a key={paper.year} href={paper.url} target="_blank" rel="noreferrer">
+                <strong>{paper.year}</strong>
+                <span>
+                  Semester papers <FiExternalLink />
+                </span>
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      )}
+
+      {!showPapers && visibleCategories.length === 0 && (
         <p className="resourcesEmpty">No resources found for "{query}".</p>
-      ) : (
+      )}
+
+      {visibleCategories.length > 0 && (
         <section>
           {visibleCategories.map((category) => (
             <motion.article
