@@ -1,22 +1,25 @@
 $text2: "Open Sans", sans-serif;
 
 .team {
-    padding: 3rem 5rem;
+  padding: 4rem 6%;
+  background-color: #f8f8f8;
 }
 
 .team h2 {
-    text-align: center;
-    font: 700 2.5rem $text2;
+  text-align: center;
+  font: 700 2.5rem $text2;
+  margin-bottom: 3rem;
 }
 
-h3 {
-    font-size: 1.7rem;
-    margin: 3rem 0 1.5rem 0;
+.team h3 {
+  font: 700 1.7rem $text2;
+  margin: 3rem 0 1.5rem;
+  text-align: center;
 }
 
 .team-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin: 1rem 0 3rem;
 }
