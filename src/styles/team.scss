@@ -1,25 +1,480 @@
 $text2: "Open Sans", sans-serif;
 
 .team {
-  padding: 4rem 6%;
-  background-color: #f8f8f8;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 7rem 6%;
+
+  background: #f5f2ef;
+  color: #25253d;
+
+  overflow: hidden;
+
+  /* background decoration */
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    top: -260px;
+    right: -180px;
+
+    border: 1px solid rgba(37, 37, 61, 0.1);
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    bottom: -180px;
+    left: -140px;
+
+    border-radius: 50%;
+
+    background: rgba(37, 37, 61, 0.035);
+  }
+
+  /* =========================
+     MAIN TITLE
+  ========================= */
+
+  > h2 {
+    position: relative;
+    z-index: 2;
+
+    width: fit-content;
+
+    margin: 0 auto 1rem;
+
+    font: 700 clamp(3rem, 6vw, 5.5rem) $text2;
+
+    line-height: 0.95;
+    letter-spacing: -3px;
+
+    text-align: center;
+
+    color: #25253d;
+
+    &::after {
+      content: "";
+
+      display: block;
+
+      width: 70px;
+      height: 4px;
+
+      margin: 1.2rem auto 0;
+
+      border-radius: 10px;
+
+      background: #25253d;
+    }
+  }
+
+  /* =========================
+     TEAM CATEGORY HEADINGS
+  ========================= */
+
+  h3 {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+
+    margin: 5rem 0 2rem;
+
+    padding-bottom: 1rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    font: 700 1.6rem $text2;
+
+    color: #25253d;
+
+    /* line after heading */
+    &::after {
+      content: "";
+
+      flex: 1;
+
+      height: 1px;
+
+      background: rgba(37, 37, 61, 0.18);
+    }
+
+    /* number-like accent */
+    &::before {
+      content: "";
+
+      width: 8px;
+      height: 8px;
+
+      flex-shrink: 0;
+
+      border-radius: 50%;
+
+      background: #25253d;
+    }
+  }
+
+  /* =========================
+     MEMBER GRID
+  ========================= */
+
+  .team-row {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 1.5rem;
+
+    margin: 0;
+
+    align-items: stretch;
+  }
+
+  /* create visual rhythm */
+  .team-row > * {
+    min-width: 0;
+
+    animation: teamCardAppear 0.6s ease both;
+  }
+
+  .team-row > *:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .team-row > *:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+
+  .team-row > *:nth-child(4) {
+    animation-delay: 0.24s;
+  }
+
+  .team-row > *:nth-child(5) {
+    animation-delay: 0.32s;
+  }
+
+  .team-row > *:nth-child(6) {
+    animation-delay: 0.4s;
+  }
+
+  .team-row > *:nth-child(7) {
+    animation-delay: 0.48s;
+  }
+
+  /* alternating cards sit slightly lower */
+  .team-row > *:nth-child(4n + 2) {
+    transform: translateY(18px);
+  }
+
+  .team-row > *:nth-child(4n + 2):hover {
+    transform: translateY(8px);
+  }
+
+  .team-row > *:nth-child(4n + 4) {
+    transform: translateY(10px);
+  }
+
+  .team-row > *:nth-child(4n + 4):hover {
+    transform: translateY(0);
+  }
 }
 
-.team h2 {
-  text-align: center;
-  font: 700 2.5rem $text2;
-  margin-bottom: 3rem;
+/* =========================
+   CARD OVERRIDES
+   Works with existing
+   TeamMember component
+========================= */
+
+.team-member-card {
+  position: relative;
+
+  width: 100%;
+
+  border-radius: 26px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 12px 35px rgba(37, 37, 61, 0.07),
+    0 2px 5px rgba(37, 37, 61, 0.04);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+
+  &:hover {
+    transform: translateY(-10px) !important;
+
+    box-shadow:
+      0 25px 55px rgba(37, 37, 61, 0.15),
+      0 5px 10px rgba(37, 37, 61, 0.06);
+  }
 }
 
-.team h3 {
-  font: 700 1.7rem $text2;
-  margin: 3rem 0 1.5rem;
-  text-align: center;
+/* image */
+
+.member-image {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 4.5;
+
+  overflow: hidden;
+
+  background: #e7e4e1;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+      linear-gradient(
+        to bottom,
+        transparent 55%,
+        rgba(37, 37, 61, 0.15)
+      );
+
+    pointer-events: none;
+  }
 }
 
-.team-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin: 1rem 0 3rem;
+.member-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.team-member-card:hover .member-image img {
+  transform: scale(1.07);
+}
+
+.image-position-top {
+  object-position: top;
+}
+
+/* information */
+
+.member-details {
+  position: relative;
+
+  padding: 1.3rem 1.3rem 1.5rem;
+
+  background: #ffffff;
+}
+
+/* little accent line */
+
+.member-details::before {
+  content: "";
+
+  position: absolute;
+
+  left: 1.3rem;
+  top: 0;
+
+  width: 35px;
+  height: 4px;
+
+  border-radius: 0 0 5px 5px;
+
+  background: #25253d;
+
+  transition: width 0.35s ease;
+}
+
+.team-member-card:hover .member-details::before {
+  width: 65px;
+}
+
+.member-name {
+  margin: 0;
+
+  padding-top: 0.25rem;
+
+  font: 700 1.15rem $text2;
+
+  line-height: 1.35;
+
+  color: #25253d;
+}
+
+.member-class {
+  margin: 0.45rem 0 1rem;
+
+  font: 400 0.85rem $text2;
+
+  line-height: 1.5;
+
+  color: #777887;
+}
+
+/* linkedin */
+
+.team-member-card a {
+  width: 36px;
+  height: 36px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #25253d;
+
+  color: #ffffff;
+
+  font-size: 1.2rem;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.team-member-card a:hover {
+  transform: translateY(-3px) scale(1.08);
+
+  background: #44446a;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes teamCardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 1050px) {
+  .team {
+    padding: 6rem 4%;
+  }
+
+  .team .team-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 700px) {
+  .team {
+    padding: 5rem 1.25rem;
+
+    > h2 {
+      font-size: 3rem;
+      letter-spacing: -1.5px;
+    }
+
+    h3 {
+      margin-top: 4rem;
+
+      font-size: 1.35rem;
+
+      gap: 0.8rem;
+    }
+
+    .team-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 1rem;
+    }
+
+    .team-row > *:nth-child(4n + 2),
+    .team-row > *:nth-child(4n + 4) {
+      transform: none;
+    }
+  }
+
+  .team-member-card {
+    border-radius: 20px;
+  }
+
+  .member-details {
+    padding: 1rem;
+  }
+
+  .member-details::before {
+    left: 1rem;
+  }
+
+  .member-name {
+    font-size: 1rem;
+  }
+
+  .member-class {
+    font-size: 0.75rem;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media screen and (max-width: 450px) {
+  .team {
+    > h2 {
+      font-size: 2.5rem;
+    }
+
+    .team-row {
+      grid-template-columns: 1fr;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+
+      &::after {
+        min-width: 30px;
+      }
+    }
+  }
+
+  .member-image {
+    aspect-ratio: 4 / 3;
+  }
 }
